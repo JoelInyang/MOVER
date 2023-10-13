@@ -1,0 +1,49 @@
+{% extends "mover/map_base.html" %}
+
+{% block title %}
+<title>Request Mover</title>
+{% endblock title %}
+
+{% block cardRight %}
+<div>
+    <form enctype="multipart/form-data" method="post" id="booking-form" class="d-flex flex-column gap-3">
+        {% csrf_token %}
+        {{ form.errors }}
+        <div>
+            <label for="">Pick Location</label>
+            <!-- <input type="text" placeholder="Enter Location"> -->
+            {{ form.pickup_location }}
+        </div>
+        <div>
+            <label for="">Drop Off Location</label>
+            <!-- <input type="text" placeholder="Enter Location"> -->
+            {{ form.dropoff_location }}
+        </div>
+        <div>
+            <label for="">Email</label>
+            <!-- <input type="text" placeholder="Enter Location"> -->
+            {{ form.email }}
+        </div>
+        <div>
+            <label for="">Vehicle Type</label>
+            {{ form.vehicle_type }}
+        </div>
+
+        <div>
+            <label for="">Select Rate Type</label>
+            <div>
+                {{ form.rate_type }}
+            </div>
+        </div>
+        <div class="">
+            <label for="">Select Service Type</label>
+            <div>
+                {{ form.service_type }}
+            </div>
+        </div>
+        <button type="submit" class="w-100" id="bookingSubmit">Submit</button>
+        <span id="tracking" value="{{ tracking_id }}"></span>
+    </form>
+</div>
+
+{% endblock cardRight %}

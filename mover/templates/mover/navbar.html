@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-xl navbar-light" style="color: #104333; font-weight: 700;">
+  <div class="container-fluid d-flex">
+    <a class="navbar-brand" href="{% url 'index' %}">MOVER</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBasic"
+      aria-controls="navbarBasic" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarBasic">
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'accept_request' %}">VIEW REQUESTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'list_fulfilled_requests' %}">FINISHED
+            REQUESTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="">
+            <i class="fas fa-user"></i>
+            {{ user.first_name }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'logout_view' %}">LOG OUT </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">BECOME A DRIVER</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'login' %}">LOGIN</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
